@@ -27,10 +27,11 @@
             <Setter Property="Height" Value="150"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="Panel.ZIndex" Value="1"/>
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid HorizontalAlignment="Center" Height="450" Margin="35,10,35,0" VerticalAlignment="Top" Width="450" Grid.RowSpan="9" Grid.ColumnSpan="9">
+        <Grid x:Name="boardGrid" HorizontalAlignment="Center" Height="450" Margin="35,10,35,0" VerticalAlignment="Top" Width="450" Grid.RowSpan="9" Grid.ColumnSpan="9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
@@ -53,7 +54,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-
+<!--
             <local:NumBox x:Name="numBox11" Grid.Column="0" Grid.Row="0"/>
             <local:NumBox x:Name="numBox12" Grid.Column="1" Grid.Row="0"/>
             <local:NumBox x:Name="numBox13" Grid.Column="2" Grid.Row="0"/>
@@ -143,7 +144,8 @@
             <local:NumBox x:Name="numBox97" Grid.Column="6" Grid.Row="8"/>
             <local:NumBox x:Name="numBox98" Grid.Column="7" Grid.Row="8"/>
             <local:NumBox x:Name="numBox99" Grid.Column="8" Grid.Row="8"/>
-            <Rectangle Grid.Column="0" Grid.Row="0" Visibility="Hidden"/>
+            -->
+            <Rectangle Grid.Column="0" Grid.Row="0"/>
             <Rectangle Grid.Column="3" Grid.Row="0"/>
             <Rectangle Grid.Column="6" Grid.Row="0"/>
             <Rectangle Grid.Column="0" Grid.Row="3"/>

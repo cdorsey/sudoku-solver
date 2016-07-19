@@ -26,6 +26,20 @@ namespace Sudoko_Solver
         public MainWindow()
         {
             InitializeComponent();
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    NumBox numBox = new NumBox();
+                    numBox.SetValue(Grid.RowProperty, i);
+                    numBox.SetValue(Grid.ColumnProperty, j);
+
+                    Solver.numBoxes.Add(numBox);
+
+                    boardGrid.Children.Add(numBox);
+                }
+            }
         }
 
         private void numBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -38,7 +52,7 @@ namespace Sudoko_Solver
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
-            IEnumerable<NumBox> numBoxList = MainWindow1.LogicalChildren.OfType<NumBox>();
+            Solver.solve();
         }
     }
 
@@ -98,17 +112,17 @@ namespace Sudoko_Solver
 
         public void removeValue(int i)
         {
-            possibleValues[i - 1] = false;
+            possibleValues[i] = false;
 
             int sum = 0;
             Array.ForEach(possibleValues, delegate (bool j) { if (j) sum++; });
 
             if (sum == 1 && !valueSet)
             {
-                this.Text = Convert.ToString(Array.IndexOf(possibleValues, true));
+                this.Text = Convert.ToString(Array.IndexOf(possibleValues, true) + 1);
                 valueSet = true;
 
-                Solver.updateBoard(this, Parent.);
+                Solver.updateBoard(this);
             }
         }
 
