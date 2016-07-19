@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Sudoko_Solver
@@ -34,15 +33,6 @@ namespace Sudoko_Solver
 
                     boardGrid.Children.Add(numBox);
                 }
-            }
-        }
-
-        private void NumBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter && solveButton.IsEnabled)
-            {
-                solveButton_Click(sender, e);
-                MessageBox.Show(e.OriginalSource.ToString());
             }
         }
 
