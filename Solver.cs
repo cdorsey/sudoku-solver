@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sudoko_Solver
 {
-    class Solver
+    static class Solver
     {
-        class numBox
-        {
+        static void solve()
 
+        internal static void updateBoard()
+        {
+            throw new NotImplementedException();
         }
     }
 }
