@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Sudoko_Solver
 {
@@ -23,6 +16,8 @@ namespace Sudoko_Solver
 
     public partial class MainWindow : Window
     {
+        public static List<NumBox> numBoxes = new List<NumBox>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,34 +30,39 @@ namespace Sudoko_Solver
                     numBox.SetValue(Grid.RowProperty, i);
                     numBox.SetValue(Grid.ColumnProperty, j);
 
-                    Solver.numBoxes.Add(numBox);
+                    numBoxes.Add(numBox);
 
                     boardGrid.Children.Add(numBox);
                 }
             }
         }
 
-        private void numBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void NumBox_KeyUp(object sender, KeyEventArgs e)
         {
-            NumBox numBox = (NumBox)sender;
-
-            MessageBox.Show(Convert.ToString(numBox.Row) + ";" + Convert.ToString(numBox.Column) +
-                ";" + Convert.ToString(numBox.Region));
+            if (e.Key == Key.Enter && solveButton.IsEnabled)
+            {
+                solveButton_Click(sender, e);
+                MessageBox.Show(e.OriginalSource.ToString());
+            }
         }
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
+            solveButton.IsEnabled = false;
+            resetButton.Focus();
             Solver.solve();
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (NumBox box in Solver.numBoxes)
+            foreach (NumBox box in numBoxes)
             {
-                box.Foreground = new SolidColorBrush(Colors.Black);
+                box.Foreground = Brushes.Black;
                 box.IsReadOnly = false;
                 box.Text = "";
             }
+            numBoxes[0].Focus();
+            solveButton.IsEnabled = true;
         }
     }
 
@@ -74,7 +74,7 @@ namespace Sudoko_Solver
         public int Region {
             get
             {
-                if (this.Row >= 0 && this.Row < 3)
+                if (Row >= 0 && this.Row < 3)
                 {
                     if (this.Column >= 0 && this.Column < 3)
                         return 0;
@@ -129,9 +129,9 @@ namespace Sudoko_Solver
 
             if (sum == 1 && !valueSet)
             {
-                this.Foreground = new SolidColorBrush(Colors.Blue);
-                this.Text = Convert.ToString(Array.IndexOf(possibleValues, true) + 1);
-                this.valueSet = true;
+                Foreground = Brushes.Blue;
+                Text = Convert.ToString(Array.IndexOf(possibleValues, true) + 1);
+                valueSet = true;
 
                 Solver.updateBoard(this);
             }

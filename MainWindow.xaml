@@ -16,7 +16,6 @@
             <Setter Property="FontSize" Value="40" />
             <Setter Property="TextAlignment" Value="Center" />
             <Setter Property="TextWrapping" Value="NoWrap" />
-            <EventSetter Event="MouseDoubleClick" Handler="numBox_MouseDoubleClick" />
         </Style>
         <Style TargetType="Rectangle">
             <Setter Property="Fill" Value="Transparent"/>
@@ -30,7 +29,7 @@
             <Setter Property="Panel.ZIndex" Value="1"/>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="mainWindow">
         <Grid x:Name="boardGrid" HorizontalAlignment="Center" Height="450" Margin="35,10,35,0" VerticalAlignment="Top" Width="450" Grid.RowSpan="9" Grid.ColumnSpan="9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
@@ -54,97 +53,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-<!--
-            <local:NumBox x:Name="numBox11" Grid.Column="0" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox12" Grid.Column="1" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox13" Grid.Column="2" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox14" Grid.Column="3" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox15" Grid.Column="4" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox16" Grid.Column="5" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox17" Grid.Column="6" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox18" Grid.Column="7" Grid.Row="0"/>
-            <local:NumBox x:Name="numBox19" Grid.Column="8" Grid.Row="0"/>
 
-            <local:NumBox x:Name="numBox21" Grid.Column="0" Grid.Row="1" />
-            <local:NumBox x:Name="numBox22" Grid.Column="1" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox23" Grid.Column="2" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox24" Grid.Column="3" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox25" Grid.Column="4" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox26" Grid.Column="5" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox27" Grid.Column="6" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox28" Grid.Column="7" Grid.Row="1"/>
-            <local:NumBox x:Name="numBox29" Grid.Column="8" Grid.Row="1"/>
-
-            <local:NumBox x:Name="numBox31" Grid.Column="0" Grid.Row="2" />
-            <local:NumBox x:Name="numBox32" Grid.Column="1" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox33" Grid.Column="2" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox34" Grid.Column="3" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox35" Grid.Column="4" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox36" Grid.Column="5" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox37" Grid.Column="6" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox38" Grid.Column="7" Grid.Row="2"/>
-            <local:NumBox x:Name="numBox39" Grid.Column="8" Grid.Row="2"/>
-
-            <local:NumBox x:Name="numBox41" Grid.Column="0" Grid.Row="3" />
-            <local:NumBox x:Name="numBox42" Grid.Column="1" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox43" Grid.Column="2" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox44" Grid.Column="3" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox45" Grid.Column="4" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox46" Grid.Column="5" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox47" Grid.Column="6" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox48" Grid.Column="7" Grid.Row="3"/>
-            <local:NumBox x:Name="numBox49" Grid.Column="8" Grid.Row="3"/>
-
-            <local:NumBox x:Name="numBox51" Grid.Column="0" Grid.Row="4" />
-            <local:NumBox x:Name="numBox52" Grid.Column="1" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox53" Grid.Column="2" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox54" Grid.Column="3" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox55" Grid.Column="4" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox56" Grid.Column="5" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox57" Grid.Column="6" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox58" Grid.Column="7" Grid.Row="4"/>
-            <local:NumBox x:Name="numBox59" Grid.Column="8" Grid.Row="4"/>
-
-            <local:NumBox x:Name="numBox61" Grid.Column="0" Grid.Row="5" />
-            <local:NumBox x:Name="numBox62" Grid.Column="1" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox63" Grid.Column="2" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox64" Grid.Column="3" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox65" Grid.Column="4" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox66" Grid.Column="5" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox67" Grid.Column="6" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox68" Grid.Column="7" Grid.Row="5"/>
-            <local:NumBox x:Name="numBox69" Grid.Column="8" Grid.Row="5"/>
-
-            <local:NumBox x:Name="numBox71" Grid.Column="0" Grid.Row="6" />
-            <local:NumBox x:Name="numBox72" Grid.Column="1" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox73" Grid.Column="2" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox74" Grid.Column="3" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox75" Grid.Column="4" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox76" Grid.Column="5" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox77" Grid.Column="6" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox78" Grid.Column="7" Grid.Row="6"/>
-            <local:NumBox x:Name="numBox79" Grid.Column="8" Grid.Row="6"/>
-
-            <local:NumBox x:Name="numBox81" Grid.Column="0" Grid.Row="7" />
-            <local:NumBox x:Name="numBox82" Grid.Column="1" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox83" Grid.Column="2" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox84" Grid.Column="3" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox85" Grid.Column="4" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox86" Grid.Column="5" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox87" Grid.Column="6" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox88" Grid.Column="7" Grid.Row="7"/>
-            <local:NumBox x:Name="numBox89" Grid.Column="8" Grid.Row="7"/>
-
-            <local:NumBox x:Name="numBox91" Grid.Column="0" Grid.Row="8" />
-            <local:NumBox x:Name="numBox92" Grid.Column="1" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox93" Grid.Column="2" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox94" Grid.Column="3" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox95" Grid.Column="4" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox96" Grid.Column="5" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox97" Grid.Column="6" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox98" Grid.Column="7" Grid.Row="8"/>
-            <local:NumBox x:Name="numBox99" Grid.Column="8" Grid.Row="8"/>
-            -->
             <Rectangle Grid.Column="0" Grid.Row="0"/>
             <Rectangle Grid.Column="3" Grid.Row="0"/>
             <Rectangle Grid.Column="6" Grid.Row="0"/>
@@ -156,6 +65,6 @@
             <Rectangle Grid.Column="6" Grid.Row="6"/>
         </Grid>
         <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="353,469,0,0" VerticalAlignment="Top" Width="76" Click="resetButton_Click"/>
-        <Button x:Name="solveButton" Content="Solve" HorizontalAlignment="Left" Margin="434,469,0,0" VerticalAlignment="Top" Width="75" Click="solveButton_Click"/>
+        <Button x:Name="solveButton" Content="Solve" HorizontalAlignment="Left" Margin="434,469,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="solveButton_Click"/>
     </Grid>
 </Window>

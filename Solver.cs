@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace Sudoko_Solver
 {
     static class Solver
     {
-        public static List<NumBox> numBoxes = new List<NumBox>();
-
         internal static void updateBoard(NumBox obj)
         {
-            foreach (NumBox e in numBoxes)
+            foreach (NumBox e in MainWindow.numBoxes)
             {
                 if (e.valueSet)
                     continue;
@@ -31,7 +24,7 @@ namespace Sudoko_Solver
 
         public static void solve()
         {
-            foreach (NumBox e in numBoxes)
+            foreach (NumBox e in MainWindow.numBoxes)
             {
                 e.IsReadOnly = true;
                 if (e.Text != "")
