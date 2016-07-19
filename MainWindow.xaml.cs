@@ -54,6 +54,16 @@ namespace Sudoko_Solver
         {
             Solver.solve();
         }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (NumBox box in Solver.numBoxes)
+            {
+                box.Foreground = new SolidColorBrush(Colors.Black);
+                box.IsReadOnly = false;
+                box.Text = "";
+            }
+        }
     }
 
     public class NumBox : TextBox
@@ -119,8 +129,9 @@ namespace Sudoko_Solver
 
             if (sum == 1 && !valueSet)
             {
+                this.Foreground = new SolidColorBrush(Colors.Blue);
                 this.Text = Convert.ToString(Array.IndexOf(possibleValues, true) + 1);
-                valueSet = true;
+                this.valueSet = true;
 
                 Solver.updateBoard(this);
             }

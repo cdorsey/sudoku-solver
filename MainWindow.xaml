@@ -155,7 +155,7 @@
             <Rectangle Grid.Column="3" Grid.Row="6"/>
             <Rectangle Grid.Column="6" Grid.Row="6"/>
         </Grid>
-        <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="353,469,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="353,469,0,0" VerticalAlignment="Top" Width="76" Click="resetButton_Click"/>
         <Button x:Name="solveButton" Content="Solve" HorizontalAlignment="Left" Margin="434,469,0,0" VerticalAlignment="Top" Width="75" Click="solveButton_Click"/>
     </Grid>
 </Window>

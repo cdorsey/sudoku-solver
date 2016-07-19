@@ -33,6 +33,7 @@ namespace Sudoko_Solver
         {
             foreach (NumBox e in numBoxes)
             {
+                e.IsReadOnly = true;
                 if (e.Text != "")
                 {
                     e.valueSet = true;
