@@ -8,11 +8,10 @@ using System.Windows.Media;
 
 namespace Sudoko_Solver
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
-
+    /** <summary>
+      * Interaction logic for MainWindow.xaml
+      * </summary>
+      */ 
     public partial class MainWindow : Window
     {
         public static List<NumBox> numBoxes = new List<NumBox>();
@@ -28,6 +27,8 @@ namespace Sudoko_Solver
                     NumBox numBox = new NumBox();
                     numBox.SetValue(Grid.RowProperty, i);
                     numBox.SetValue(Grid.ColumnProperty, j);
+                    numBox.AddHandler(NumBox.TextChangedEvent, new RoutedEventHandler(NumBox_TextChanged));
+                    numBox.AddHandler(NumBox.GotFocusEvent, new RoutedEventHandler(NumBox_GotFocus));
 
                     numBoxes.Add(numBox);
 
@@ -54,6 +55,26 @@ namespace Sudoko_Solver
             numBoxes[0].Focus();
             solveButton.IsEnabled = true;
         }
+
+        private void NumBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            NumBox numBox = sender as NumBox;
+
+            if (numBox.Text.Length >= 1)
+            {
+                numBoxes[numBoxes.IndexOf(numBox) + 1].Focus();
+            }
+        }
+
+        private void NumBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            NumBox numBox = sender as NumBox;
+
+            if (numBox != null)
+                numBox.SelectAll();
+        }
+
+
     }
 
     public class NumBox : TextBox
